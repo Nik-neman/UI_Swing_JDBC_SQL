@@ -36,6 +36,8 @@ public class ProductTable extends JFrame {
                 {"avisp.exe", "17.12.2007 16:58", "File", "12,67MB"},
         };
 
+//        JTable.setModel(TableModel);
+
         JTable table = new JTable(data, columnNames);
 
         JScrollPane scrollPane = new JScrollPane(table);
