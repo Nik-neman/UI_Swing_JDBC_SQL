@@ -1,0 +1,1 @@
+productproductSELECT * FROM product.productprice;
