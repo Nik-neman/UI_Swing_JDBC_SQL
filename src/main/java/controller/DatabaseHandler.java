@@ -11,8 +11,6 @@ public class DatabaseHandler extends Configs {
     Connection dbConnection;
 
     public Connection getDbConnection()  throws  ClassNotFoundException, SQLException {
-            + dbPort + "/" + dbName;
-
 
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort +"/" +dbName;
@@ -38,7 +36,7 @@ public class DatabaseHandler extends Configs {
     public ResultSet getProduct(){
         ResultSet resSet = null;
 
-        String select = "SELECT productName, productModel, productPrice FROM product JOIN price ON product.model = price.model WHERE " +
+        String select = "SELECT productName, product.productModel, productPrice FROM product JOIN productprice ON product.productModel = productprice.productModel";
 
 
         try {

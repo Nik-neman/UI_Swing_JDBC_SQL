@@ -1,25 +1,26 @@
+import controller.DatabaseHandler;
+import viev.ProductTable;
+import viev.VievAdapter;
+
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+
 public class Main {
     public static void main(String[] args) {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        ResultSet resSet;
+        resSet = dbHandler.getProduct();
+        System.out.println(resSet);
 
 
 
-        ResultSet rs = st.executeQuery("select * from users");
-        // Количество колонок в результирующем запросе
-        int columns = rs.getMetaData().getColumnCount();
-        // Перебор строк с данными
-        while(rs.next()){
-            for (int i = 1; i <= columns; i++){
-                System.out.print(rs.getString(i) + "\t");
+
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame.setDefaultLookAndFeelDecorated(true);
+                ProductTable.createGUI(VievAdapter.resSetToArray(resSet));
             }
-            System.out.println();
-        }
-        System.out.println();
-        if(rs != null)
-            rs.close();
-        if(st != null)
-            st.close();
-        if(con != null)
-            con.close();
-    }
+        });
     }
 }
