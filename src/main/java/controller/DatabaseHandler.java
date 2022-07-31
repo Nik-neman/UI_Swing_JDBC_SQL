@@ -6,7 +6,6 @@ import java.sql.*;
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
 
-
     public Connection getDbConnection()  throws  ClassNotFoundException, SQLException {
 
         String connectionString = "jdbc:mysql://" + dbHost + ":"
@@ -29,24 +28,17 @@ public class DatabaseHandler extends Configs {
         return dbConnection;
     }
 
-
     public ResultSet getProduct(){
-
-
 
         ResultSet resSet = null;
 
-
         String select = "SELECT productName, product.productModel, productPrice FROM product JOIN productprice ON product.productModel = productprice.productModel";
 
-
         try {
-
             Statement statement = getDbConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
             resSet = statement.executeQuery(select);
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {

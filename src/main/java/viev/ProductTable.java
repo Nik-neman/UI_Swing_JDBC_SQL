@@ -8,7 +8,6 @@ import javax.swing.JTable;
 
 public class ProductTable extends JFrame {
 
-
     public static void createGUI(String[][] data) {
         JFrame frame = new JFrame("Список доступных товаров");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,7 +19,6 @@ public class ProductTable extends JFrame {
                 "Цена"
         };
 
-
         JTable table = new JTable(data, columnNames);
 
         JScrollPane scrollPane = new JScrollPane(table);
@@ -31,5 +29,4 @@ public class ProductTable extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-
 }

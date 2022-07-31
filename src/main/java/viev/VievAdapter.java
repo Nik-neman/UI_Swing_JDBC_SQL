@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 public class VievAdapter {
 
-
     public static String[][] resSetToArray(ResultSet resultSet) throws SQLException {
         String[][] data;
         int count = 1;
@@ -28,9 +27,7 @@ public class VievAdapter {
 //                    System.out.print(resultSet.getObject(j) + " ");
                 }
 //                System.out.println();
-
             }
-
 //        System.out.println(data);
         return data;
     }
