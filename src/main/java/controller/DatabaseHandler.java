@@ -4,7 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 
 public class DatabaseHandler extends Configs {
-    Connection dbConnection;
+    public Connection dbConnection;
+    public ResultSet resSet = null;
+    public Statement statement = null;
 
     public Connection getDbConnection()  throws  ClassNotFoundException, SQLException {
 
@@ -30,16 +32,13 @@ public class DatabaseHandler extends Configs {
 
     public ResultSet getProduct(){
 
-        ResultSet resSet = null;
-        Statement statement = null;
-
         String select = "SELECT productName, product.productModel, productPrice FROM product JOIN productprice ON product.productModel = productprice.productModel";
 
         try {
              statement = getDbConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            resSet = statement.executeQuery(select);
+             resSet = statement.executeQuery(select);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {

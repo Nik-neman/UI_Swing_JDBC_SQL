@@ -25,8 +25,9 @@ public class Main {
                 finally {
                     try {
                         if(resSet != null) {resSet.close();}
-                        if(dbHandler.getDbConnection() != null) {dbHandler.getDbConnection().close();}
-                    } catch (SQLException | ClassNotFoundException throwables) {
+                        if(dbHandler.dbConnection != null) {dbHandler.dbConnection.close();}
+                        if(dbHandler.statement != null) {dbHandler.statement.close();}
+                    } catch (SQLException  throwables) {
                         throwables.printStackTrace();
                     }
                 }
