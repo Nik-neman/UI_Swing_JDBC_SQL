@@ -1,14 +1,11 @@
 package controller;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
+
 
     public Connection getDbConnection()  throws  ClassNotFoundException, SQLException {
 
@@ -34,14 +31,22 @@ public class DatabaseHandler extends Configs {
 
 
     public ResultSet getProduct(){
+
+
+
         ResultSet resSet = null;
+
 
         String select = "SELECT productName, product.productModel, productPrice FROM product JOIN productprice ON product.productModel = productprice.productModel";
 
 
         try {
-            PreparedStatement prSt = getDbConnection().prepareStatement(select);
-            resSet = prSt.executeQuery();
+
+            Statement statement = getDbConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            resSet = statement.executeQuery(select);
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {

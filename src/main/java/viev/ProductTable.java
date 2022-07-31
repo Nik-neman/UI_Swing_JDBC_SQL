@@ -15,14 +15,11 @@ public class ProductTable extends JFrame {
 
         String[] columnNames = {
                 "№ п/п",
-                "Модель",
                 "Наименование",
+                "Артикул",
                 "Цена"
         };
 
-
-
-//        JTable.setModel(TableModel);
 
         JTable table = new JTable(data, columnNames);
 
@@ -35,12 +32,4 @@ public class ProductTable extends JFrame {
         frame.setVisible(true);
     }
 
-//    public static void main(String[] args) {
-//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                JFrame.setDefaultLookAndFeelDecorated(true);
-//                createGUI();
-//            }
-//        });
-//    }
 }
