@@ -22,6 +22,14 @@ public class Main {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+                finally {
+                    try {
+                        if(resSet != null) {resSet.close();}
+                        if(dbHandler.getDbConnection() != null) {dbHandler.getDbConnection().close();}
+                    } catch (SQLException | ClassNotFoundException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
             }
         });
     }

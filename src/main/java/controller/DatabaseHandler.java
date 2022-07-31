@@ -31,11 +31,12 @@ public class DatabaseHandler extends Configs {
     public ResultSet getProduct(){
 
         ResultSet resSet = null;
+        Statement statement = null;
 
         String select = "SELECT productName, product.productModel, productPrice FROM product JOIN productprice ON product.productModel = productprice.productModel";
 
         try {
-            Statement statement = getDbConnection().createStatement(
+             statement = getDbConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
             resSet = statement.executeQuery(select);
@@ -44,6 +45,7 @@ public class DatabaseHandler extends Configs {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         return resSet;
     }
 }
