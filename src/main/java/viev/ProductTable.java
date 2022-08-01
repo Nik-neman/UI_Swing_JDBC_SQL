@@ -8,16 +8,9 @@ import javax.swing.JTable;
 
 public class ProductTable extends JFrame {
 
-    public static void createGUI(String[][] data) {
+    public static void createGUI(String[][] data, String[] columnNames) {
         JFrame frame = new JFrame("Список доступных товаров");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        String[] columnNames = {
-                "№ п/п",
-                "Наименование",
-                "Артикул",
-                "Цена"
-        };
 
         JTable table = new JTable(data, columnNames);
 

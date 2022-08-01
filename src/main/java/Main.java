@@ -13,12 +13,26 @@ public class Main {
         DatabaseHandler dbHandler = new DatabaseHandler();
         ResultSet resSet;
         resSet = dbHandler.getProduct();
+        String[][] dataNull = {{"Отсуцтвует соединение с базой данных или неверная база данных"}};
+        String[] columnNamesNull = {"Произошла ошибка! Данные не получены."};
+        String[] columnNames = {
+                "№ п/п",
+                "Наименование",
+                "Артикул",
+                "Цена"
+        };
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame.setDefaultLookAndFeelDecorated(true);
                 try {
-                    ProductTable.createGUI(VievAdapter.resSetToArray(resSet));
+                    String[][] data = VievAdapter.resSetToArray(resSet);
+                    if (data != null) {
+                        ProductTable.createGUI(data, columnNames);
+                    }  else {
+                        ProductTable.createGUI(dataNull, columnNamesNull);
+                    }
+
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

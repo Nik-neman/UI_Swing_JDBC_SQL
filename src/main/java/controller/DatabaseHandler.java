@@ -43,8 +43,8 @@ public class DatabaseHandler extends Configs {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            return resSet;
         }
-
-        return resSet;
     }
 }
